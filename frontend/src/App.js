@@ -7,6 +7,7 @@ import {
 import Home from './pages/Home'; 
 import Events from './pages/Events';
 import Navbar from './components/Navbar';
+import PointsTable from './pages/Points';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home title='Home' />}/>
             <Route path='events' element={<Events title='Events'/>}/>
+            <Route path='/points-table' element={<PointsTable title='Leaderboard'/>}/>
           </Routes>
         </Router>
     </div>

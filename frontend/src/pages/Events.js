@@ -36,7 +36,7 @@ const Events = (props) => {
   return (
     <div>
 
-      <div className="tabs-container">
+      <div className="tabscontainer">
         <button onClick={() => setActiveTab('upcoming')} className={activeTab === 'upcoming' ? 'active' : ''}>Upcoming</button>
         <button onClick={() => setActiveTab('live')} className={activeTab === 'live' ? 'active' : ''}>Live</button>
         <button onClick={() => setActiveTab('past')} className={activeTab === 'past' ? 'active' : ''}>Past</button>
@@ -64,7 +64,7 @@ const Events = (props) => {
       </div>
 
       <style jsx>{`
-        .tabs-container {
+        .tabscontainer {
           display: flex;
           gap: 10px;
           justify-content: center;
