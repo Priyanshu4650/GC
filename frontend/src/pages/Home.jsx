@@ -11,8 +11,12 @@ const Home = (props) => {
   return (
     <div>
       <Caraousel />
+      <br />
+      <br />
       <About />
-      <Footer />
+      <br />
+      <br />
+      <Footer/>
     </div>
   )
 }

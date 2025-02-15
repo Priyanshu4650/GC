@@ -4,7 +4,7 @@ import '../styles/Caraousel.css';
 const Caraousel = () => {
   return (
     <div className="container-fluid p-0">
-      <div id="carouselExampleIndicators" className="carousel slide vh-100">
+      <div id="carouselExampleIndicators" className="carousel slide vh-100" data-bs-ride="carousel" data-bs-interval="1000">
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -15,10 +15,10 @@ const Caraousel = () => {
             <img src="/assests/DSC00462.JPG" className="d-block w-100 h-100" alt="..." />
           </div>
           <div className="carousel-item h-100">
-            <img src="/assests/DSC00462.JPG" className="d-block w-100 h-100" alt="..." />
+            <img src="/assests/DSC03552.JPG" className="d-block w-100 h-100" alt="..." />
           </div>
           <div className="carousel-item h-100">
-            <img src="/assests/DSC00462.JPG" className="d-block w-100 h-100" alt="..." />
+            <img src="/assests/DSC02022.JPG" className="d-block w-100 h-100" alt="..." />
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

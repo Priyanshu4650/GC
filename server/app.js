@@ -16,7 +16,7 @@ const io = new Server(server, {
 app.use(express.json());
 app.use(cors());
 
-const MONGO_URL = process.env.MONGO_URL || "mongodb+srv://priyanshu022017:dZ6dxV4lmqHcH4Xx@cluster0.uhram.mongodb.net/GC?retryWrites=true&w=majority&appName=Cluster0";
+const MONGO_URL = process.env.MONGO_URL;
 console.log(process.env.MONGO_URL);
 
 if (!MONGO_URL) {
@@ -34,35 +34,465 @@ const matchSchema = new mongoose.Schema({
     teams: { type: [String], required: true },
     time: { type: Date, required: true },
     venue: { type: String, required: true },
+    sport: { type: String, required: true },
     scores: { type: Map, of: Number, default: {} },
     status: { type: String, enum: ['upcoming', 'live', 'past'], default: 'upcoming' }
 });
 
 const Match = mongoose.model('Match', matchSchema);
 
-// const dummyMatches = [
-//     {
-//         teams: ["Team A", "Team B"],
-//         time: new Date(new Date().getTime() + 3600000), // 1 hour from now
-//         venue: "Stadium 1",
-//         scores: { "Team A": 0, "Team B": 0 },
-//         status: "upcoming"
-//     },
-//     {
-//         teams: ["Team C", "Team D"],
-//         time: new Date(), // Ongoing match
-//         venue: "Stadium 2",
-//         scores: { "Team C": 2, "Team D": 1 },
-//         status: "live"
-//     },
-//     {
-//         teams: ["Team E", "Team F"],
-//         time: new Date(new Date().getTime() - 7200000), // 2 hours ago
-//         venue: "Stadium 3",
-//         scores: { "Team E": 3, "Team F": 4 },
-//         status: "past"
-//     }
-// ];
+const dummyMatches = [
+    {
+      teams: ["Rhinos", "Sharks"],
+	  time: new Date("2025-02-28T17:15:00"), 
+	  venue: "Agora Badminton Court",
+      sport: "Badminton Mens",
+	  scores: { "Rhinos": "0", "Sharks": "0" },
+	  status: "upcoming"
+    },
+    {
+      teams: [
+        "Panthers",
+        "Eagles"
+      ],
+      time: new Date("2025-03-01T06:45:00"),
+      venue: "Agora Badminton Court",
+      sport: "Badminton Mens",
+      scores: {
+        "Rhinos" : "0", "Sharks": "0"
+      },
+      status: "upcoming"
+    },
+    {
+        teams: [
+          "Wolves",
+          "Bulls"
+        ],
+        time: new Date("2025-03-01T09:00:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Wolves" : "0", "Bulls": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Lions",
+          "Tigers"
+        ],
+        time: new Date("2025-03-01T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Lions" : "0", "Tigers": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Panthers",
+          "Rhinos"
+        ],
+        time: new Date("2025-03-02T07:00:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Rhinos" : "0", "Panthers": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Sharks",
+          "Eagles"
+        ],
+        time: new Date("2025-03-02T10:35:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Eagles" : "0", "Sharks": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Lions",
+          "Wolves"
+        ],
+        time: new Date("2025-03-02T14:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Lions" : "0", "Wolves": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Tigers",
+          "Bulls"
+        ],
+        time: new Date("2025-03-02T17:45:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Tigers" : "0", "Bulls": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Panthers",
+          "Sharks"
+        ],
+        time: new Date("2025-03-03T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Panthers" : "0", "Sharks": "0"
+        },
+        status: "upcoming"
+      },{
+        teams: [
+          "Rhinos",
+          "Eagles"
+        ],
+        time: new Date("2025-03-04T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Rhinos" : "0", "Eagles": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Lions",
+          "Bulls"
+        ],
+        time: new Date("2025-03-05T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Bulls" : "0", "Lions": "0"
+        },
+        status: "upcoming"
+      }
+      ,{
+        teams: [
+          "Tigers",
+          "Wolves"
+        ],
+        time: new Date("2025-03-07T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Tigers" : "0", "Wolves": "0"
+        },
+        status: "upcoming"
+    },
+    {
+      teams: ["Rhinos", "Sharks"],
+	  time: new Date("2025-02-28T17:15:00"), 
+	  venue: "Agora Badminton Court",
+      sport: "Badminton Mens",
+	  scores: { "Rhinos": "0", "Sharks": "0" },
+	  status: "upcoming"
+    },
+    {
+      teams: [
+        "Panthers",
+        "Eagles"
+      ],
+      time: new Date("2025-03-01T06:45:00"),
+      venue: "Agora Badminton Court",
+      sport: "Badminton Mens",
+      scores: {
+        "Rhinos" : "0", "Sharks": "0"
+      },
+      status: "upcoming"
+    },
+    {
+        teams: [
+          "Wolves",
+          "Bulls"
+        ],
+        time: new Date("2025-03-01T09:00:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Wolves" : "0", "Bulls": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Lions",
+          "Tigers"
+        ],
+        time: new Date("2025-03-01T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Lions" : "0", "Tigers": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Panthers",
+          "Rhinos"
+        ],
+        time: new Date("2025-03-02T07:00:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Rhinos" : "0", "Panthers": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Sharks",
+          "Eagles"
+        ],
+        time: new Date("2025-03-02T10:35:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Eagles" : "0", "Sharks": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Lions",
+          "Wolves"
+        ],
+        time: new Date("2025-03-02T14:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Lions" : "0", "Wolves": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Tigers",
+          "Bulls"
+        ],
+        time: new Date("2025-03-02T17:45:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Tigers" : "0", "Bulls": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Panthers",
+          "Sharks"
+        ],
+        time: new Date("2025-03-03T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Panthers" : "0", "Sharks": "0"
+        },
+        status: "upcoming"
+      },{
+        teams: [
+          "Rhinos",
+          "Eagles"
+        ],
+        time: new Date("2025-03-04T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Rhinos" : "0", "Eagles": "0"
+        },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Lions",
+          "Bulls"
+        ],
+        time: new Date("2025-03-05T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Bulls" : "0", "Lions": "0"
+        },
+        status: "upcoming"
+      }
+      ,{
+        teams: [
+          "Tigers",
+          "Wolves"
+        ],
+        time: new Date("2025-03-07T17:15:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Mens",
+        scores: {
+          "Tigers" : "0", "Wolves": "0"
+        },
+        status: "upcoming"
+    },
+    {
+        teams: ["Wolves", "Bulls"],
+        time: new Date("2025-02-28T19:30:00"), 
+        venue: "Agora Badminton Court",
+        sport: "Badminton Womens",
+        scores: { "Wolves": "0", "Bulls": "0" },
+        status: "upcoming"
+      },
+      {
+        teams: [
+          "Panthers",
+          "Lions"
+        ],
+        time: new Date("2025-03-01T16:30:00"),
+        venue: "Agora Badminton Court",
+        sport: "Badminton Womens",
+        scores: {
+          "Lions" : "0", "Panthers": "0"
+        },
+        status: "upcoming"
+      },
+      {
+          teams: [
+            "Eagles",
+            "Rhinos"
+          ],
+          time: new Date("2025-03-01T12:40:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Eagles" : "0", "Rhinos": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Sharks",
+            "Tigers"
+          ],
+          time: new Date("2025-03-02T09:15:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Sharks" : "0", "Tigers": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Panthers",
+            "wolves"
+          ],
+          time: new Date("2025-03-02T12:50:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Wolves" : "0", "Panthers": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Bulls",
+            "Lions"
+          ],
+          time: new Date("2025-03-02T16:35:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Bulls" : "0", "Lions": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Eagles",
+            "Sharks"
+          ],
+          time: new Date("2025-03-02T20:15:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Eagles" : "0", "Sharks": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Tigers",
+            "Rhinos"
+          ],
+          time: new Date("2025-03-03T19:30:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Tigers" : "0", "Rhinos": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Lions",
+            "Wolves"
+          ],
+          time: new Date("2025-03-04T19:15:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Wolves" : "0", "Lions": "0"
+          },
+          status: "upcoming"
+        },{
+          teams: [
+            "Bulls",
+            "Panthers"
+          ],
+          time: new Date("2025-03-05T19:15:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Bulls" : "0", "Panthers": "0"
+          },
+          status: "upcoming"
+        },
+        {
+          teams: [
+            "Eagles",
+            "Tigers"
+          ],
+          time: new Date("2025-03-06T19:15:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Eagles" : "0", "Tigers": "0"
+          },
+          status: "upcoming"
+        }
+        ,{
+          teams: [
+            "Rhinos",
+            "Sharks"
+          ],
+          time: new Date("2025-03-07T19:15:00"),
+          venue: "Agora Badminton Court",
+          sport: "Badminton Womens",
+          scores: {
+            "Rhinos" : "0", "Sharks": "0"
+          },
+          status: "upcoming"
+      }
+];
 
 // Match.insertMany(dummyMatches)
 //     .then(() => {
@@ -80,31 +510,31 @@ const Match = mongoose.model('Match', matchSchema);
 
 // setInterval(updateMatchStatuses, 60000);
 
-const updateMatchStatuses = async () => {
-    const now = new Date();
+// const updateMatchStatuses = async () => {
+//     const now = new Date();
 
-    try {
-        // Update "upcoming" → "live" if match time has started
-        await Match.updateMany(
-            { time: { $lte: now }, status: "upcoming" },
-            { $set: { status: "live" } }
-        );
+//     try {
+//         // Update "upcoming" → "live" if match time has started
+//         await Match.updateMany(
+//             { time: { $lte: now }, status: "upcoming" },
+//             { $set: { status: "live" } }
+//         );
 
-        // Update "live" → "past" if match ended (assuming 2-hour duration)
-        const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000);
-        await Match.updateMany(
-            { time: { $lte: twoHoursAgo }, status: "live" },
-            { $set: { status: "past" } }
-        );
+//         // Update "live" → "past" if match ended (assuming 2-hour duration)
+//         const twoHoursAgo = new Date(now.getTime() - 2 * 60 * 60 * 1000);
+//         await Match.updateMany(
+//             { time: { $lte: twoHoursAgo }, status: "live" },
+//             { $set: { status: "past" } }
+//         );
 
-        console.log("Match statuses updated at ", now);
-    } catch (error) {
-        console.error("Error updating match statuses:", error);
-    }
-};
+//         console.log("Match statuses updated at ", now);
+//     } catch (error) {
+//         console.error("Error updating match statuses:", error);
+//     }
+// };
 
-// Run status updates every minute
-setInterval(updateMatchStatuses, 60000);
+// // Run status updates every minute
+// setInterval(updateMatchStatuses, 60000);
 
 
 // Create a new match
@@ -127,7 +557,7 @@ app.get('/matches', async (req, res) => {
             live: matches.filter(m => m.status === 'live'),
             past: matches.filter(m => m.status === 'past')
         };
-        // console.log(categorized); // Log full object
+        // console.log("Matches : ", categorized); // Log full object
         res.json(categorized);
     } catch (error) {
         res.status(500).json({ error: error.message });

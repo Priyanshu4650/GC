@@ -63,7 +63,7 @@ const Navbar = () => {
                 {/* <Link className="nav-link active" to="#"> */}
                 {/* <p className="nav-link active">RuleBook</p> */}
                 {/* </Link> */}
-                <a className="nav-link active" href="/rulebook">
+                <a className="nav-link active" href="https://docs.google.com/document/d/1AGj8LifA9gSygQsDY0wWllNdyTcvbmGa/edit?usp=sharing&ouid=110758014801847889834&rtpof=true&sd=true">
                   RuleBook
                 </a>
               </li>
