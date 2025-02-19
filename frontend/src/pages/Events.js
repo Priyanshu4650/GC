@@ -32,7 +32,7 @@ const Events = (props) => {
 
     document.title += ' - ' + props.title;
     fetchMatches();
-  }, []);
+  }, [props]);
 
   return (
     <div>

@@ -9,19 +9,21 @@ const Navbar = () => {
         data-bs-theme="dark"
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/" />
-          <p className="navbar-brand">General Championship</p>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <Link className="navbar-brand" to="/">
+            
+            <p className="navbar-brand"><img src="/assests/logo.jpeg" style={{width: "1.5rem"}} alt="..."/>    General Championship</p>
+            {/* <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button> */}
+          </Link>
           <div
             className="collapse navbar-collapse d-flex flex-row-reverse"
             id="navbarNav"
@@ -35,14 +37,14 @@ const Navbar = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                {/* <Link className="nav-link active" to="/events">
+              {/* <li className="nav-item">
+                <Link className="nav-link active" to="/events">
                   <p className="nav-link active">Events</p>
-                </Link> */}
+                </Link> 
                 <Link className="nav-link active" to="/events">
                   Events
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 {/* <Link className="nav-link active" to="/points-table"> */}
                 {/* <p className="nav-link active">Points Table</p> */}
@@ -63,7 +65,10 @@ const Navbar = () => {
                 {/* <Link className="nav-link active" to="#"> */}
                 {/* <p className="nav-link active">RuleBook</p> */}
                 {/* </Link> */}
-                <Link className="nav-link active" to="https://docs.google.com/document/d/1AGj8LifA9gSygQsDY0wWllNdyTcvbmGa/edit?usp=sharing&ouid=110758014801847889834&rtpof=true&sd=true">
+                <Link
+                  className="nav-link active"
+                  to="https://docs.google.com/document/d/1AGj8LifA9gSygQsDY0wWllNdyTcvbmGa/edit?usp=sharing&ouid=110758014801847889834&rtpof=true&sd=true"
+                >
                   RuleBook
                 </Link>
               </li>

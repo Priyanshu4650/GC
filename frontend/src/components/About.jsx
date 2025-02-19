@@ -10,10 +10,15 @@ const About = () => {
           className="about-text p-2 flex-grow-1"
           style={{ maxWidth: "1500px" }}
         >
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem eaque
-          vitae explicabo, soluta aliquid natus reiciendis excepturi molestiae
-          sequi, veniam dolorem odio saepe! Magni eveniet sed quis quaerat
-          recusandae magnam debitis consectetur in a.
+          General Championship is the annual inter-batch tournament where
+          students as well as faculty/staff strive to uphold their batch's
+          pride. This serves as the right platform for every person at the
+          institute of various experiences to have a healthy interaction with
+          each other. Points are allotted to winners and runners in each event
+          accordingly and the batch with the highest aggregate of points across
+          all events is named the General Champion. Each event sees a winner and
+          points are awarded according to the standings, thus making an overall
+          points tally.
         </span>
         {/* Image Card */}
         <div className="card p-2" style={{ width: "25rem" }}>
@@ -26,7 +31,7 @@ const About = () => {
       </div>
       <br />
       <br />
-      
+
       <h1>Teams Participating</h1>
       <div className="card-container">
         <div className="card">

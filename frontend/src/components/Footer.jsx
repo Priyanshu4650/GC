@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiLogoInstagramAlt } from "react-icons/bi";
+import { FaYoutube } from "react-icons/fa";
+
 
 const Footer = () => {
   return (
-    <div className="bg-dark text-white p-6 fixed bottom-0 w-full" 
-    data-bs-theme="dark">
+    <div
+      className="bg-dark text-white p-6 fixed bottom-0 w-full"
+      data-bs-theme="dark"
+    >
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-700 pt-4 d-flex">
         {/* Useful Links Section */}
         <div className="p-2 flex-fill">
@@ -56,8 +60,21 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gray-800 p-3 rounded-full hover:bg-gray-700"
+            style={{ textDecoration: "none", color: "white" }}
           >
-            <BiLogoInstagramAlt className="text-white text-4xl" />
+            <BiLogoInstagramAlt className="text-white text-4xl" />{" "}
+            <span>Instagram</span>
+          </a>
+          <br />
+          <a
+            href="https://www.instagram.com/sports_iit_pkd/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-gray-800 p-3 rounded-full hover:bg-gray-700"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <FaYoutube className="text-white text-4xl" />{" "}
+            <span>Youtube</span>
           </a>
         </div>
       </div>
