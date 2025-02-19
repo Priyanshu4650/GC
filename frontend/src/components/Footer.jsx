@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { FaFacebookF } from "react-icons/fa";
+import { BiLogoInstagramAlt } from "react-icons/bi";
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-black p-6 fixed bottom-0 w-full">
+    <div className="bg-dark text-white p-6 fixed bottom-0 w-full" 
+    data-bs-theme="dark">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-gray-700 pt-4 d-flex">
         {/* Useful Links Section */}
         <div className="p-2 flex-fill">
@@ -16,7 +17,7 @@ const Footer = () => {
               {" "}
               <Link
                 to="https://iitpkd.ac.in"
-                style={{ color: "black" }}
+                style={{ color: "white", textDecoration: "none" }}
                 className="hover:underline no-underline"
               >
                 IIT Palakkad
@@ -27,7 +28,7 @@ const Footer = () => {
             <li>
               <Link
                 to="https://docs.google.com/document/d/1AGj8LifA9gSygQsDY0wWllNdyTcvbmGa/edit?usp=sharing&ouid=110758014801847889834&rtpof=true&sd=true"
-                style={{ color: "black" }}
+                style={{ color: "white", textDecoration: "none" }}
                 className="hover:underline no-underline"
               >
                 RuleBook
@@ -41,8 +42,7 @@ const Footer = () => {
           <h3 className="text-lg font-bold border-b-2 border-blue-500 inline-block mb-2">
             CONTACT US
           </h3>
-          <p>IIT Palakkad</p>
-          <p>Kanjikode</p>
+          <p>IIT Palakkad, Kanjikode</p>
           <p>Palakkad, Kerala - 678623</p>
         </div>
 
@@ -51,18 +51,21 @@ const Footer = () => {
           <h3 className="text-lg font-bold border-b-2 border-blue-500 inline-block mb-2">
             CONNECT WITH US
           </h3>
-          <Link
-            to=""
+          <a
+            href="https://www.instagram.com/sports_iit_pkd/?hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-gray-800 p-3 rounded-full hover:bg-gray-700"
           >
-            {/* <FaFacebookF className="text-white text-lg" /> */}
-          </Link>
+            <BiLogoInstagramAlt className="text-white text-4xl" />
+          </a>
         </div>
       </div>
+      <hr />
       <div className="text-center mt-6">
         <p>&copy; 2025 GC IIT Palakkad. All Rights Reserved.</p>
       </div>
-    </footer>
+    </div>
   );
 };
 
