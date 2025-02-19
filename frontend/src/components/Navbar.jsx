@@ -31,41 +31,41 @@ const Navbar = () => {
                 {/* <Link className="nav-link active" aria-current="page" to="/">
                   <p className="nav-link active">Home</p>
                 </Link> */}
-                <a className="nav-link active" href="/">
+                <Link className="nav-link active" to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <Link className="nav-link active" to="/events">
                   <p className="nav-link active">Events</p>
                 </Link> */}
-                <a className="nav-link active" href="/events">
+                <Link className="nav-link active" to="/events">
                   Events
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <Link className="nav-link active" to="/points-table"> */}
                 {/* <p className="nav-link active">Points Table</p> */}
                 {/* </Link> */}
-                <a className="nav-link active" href="/points-table">
+                <Link className="nav-link active" to="/points-table">
                   Points Table
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <Link className="nav-link active" to="/team"> */}
                 {/* <p className="nav-link active">Meet The Team</p> */}
                 {/* </Link> */}
-                <a className="nav-link active" href="/team">
+                <Link className="nav-link active" to="/team">
                   Meet the Team
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 {/* <Link className="nav-link active" to="#"> */}
                 {/* <p className="nav-link active">RuleBook</p> */}
                 {/* </Link> */}
-                <a className="nav-link active" href="https://docs.google.com/document/d/1AGj8LifA9gSygQsDY0wWllNdyTcvbmGa/edit?usp=sharing&ouid=110758014801847889834&rtpof=true&sd=true">
+                <Link className="nav-link active" to="https://docs.google.com/document/d/1AGj8LifA9gSygQsDY0wWllNdyTcvbmGa/edit?usp=sharing&ouid=110758014801847889834&rtpof=true&sd=true">
                   RuleBook
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

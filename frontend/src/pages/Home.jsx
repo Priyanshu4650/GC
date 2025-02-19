@@ -16,6 +16,7 @@ const Home = (props) => {
       <About />
       <br />
       <br />
+      <hr />
       <Footer/>
     </div>
   )

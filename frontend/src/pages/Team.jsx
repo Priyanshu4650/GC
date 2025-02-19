@@ -72,53 +72,47 @@ const Team = (props) => {
       <br />
       <hr />
       <br />
-      <div>
-        <h2>Organisers</h2>
-        {/* Revanth, Lohith, Nikhil, Vinay */}
-        <div className="d-flex justify-content-center">
-          <div class="card" style={{ width: "18rem;" }}>
-            <img
-              src="/assests/WhatsApp Image 2025-02-14 at 14.02.13.jpeg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">J. Revanth</h5>
-              <p class="card-text">General Secretary Hostel Affairs</p>
-            </div>
-          </div>
-          <div class="card" style={{ width: "18rem;" }}>
-            <img
-              src="/assests/WhatsApp Image 2025-02-13 at 23.44.56.jpeg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Lohith</h5>
-            </div>
-          </div>
-          <div class="card" style={{ width: "18rem;" }}>
-            <img
-              src="/assests/WhatsApp Image 2025-02-14 at 00.22.47.jpeg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Nikhil S Thomas</h5>
-            </div>
-          </div>
-          <div class="card" style={{ width: "18rem;" }}>
-            <img
-              src="/assests/vinay.jpeg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Vinay Krishna</h5>
-            </div>
+      <div className="container">
+  <h2 className="text-center mb-4">Organisers</h2>
+  <div className="row justify-content-center">
+    {/* Revanth, Lohith, Nikhil, Vinay */}
+    {[
+      {
+        name: "J. Revanth",
+        title: "General Secretary Hostel Affairs",
+        img: "/assests/WhatsApp Image 2025-02-14 at 14.02.13.jpeg",
+      },
+      {
+        name: "Lohith",
+        img: "/assests/WhatsApp Image 2025-02-13 at 23.44.56.jpeg",
+      },
+      {
+        name: "Nikhil S Thomas",
+        img: "/assests/WhatsApp Image 2025-02-14 at 00.22.47.jpeg",
+      },
+      {
+        name: "Vinay Krishna",
+        img: "/assests/vinay.jpeg",
+      },
+    ].map((organiser, index) => (
+      <div key={index} className="col-md-3 col-sm-6 d-flex align-items-stretch">
+        <div className="card h-100 text-center">
+          <img
+            src={organiser.img}
+            className="card-img-top"
+            alt={organiser.name}
+            style={{ height: "250px", objectFit: "cover" }}
+          />
+          <div className="card-body d-flex flex-column">
+            <h5 className="card-title">{organiser.name}</h5>
+            {organiser.title && <p className="card-text">{organiser.title}</p>}
           </div>
         </div>
       </div>
+    ))}
+  </div>
+</div>
+
       <br />
       <hr />
       <br />
@@ -157,7 +151,9 @@ const Team = (props) => {
           </div>
         </div>
       </div>
-
+      <br />
+      <br />
+      <hr />
       <Footer/>
     </div>
   );
