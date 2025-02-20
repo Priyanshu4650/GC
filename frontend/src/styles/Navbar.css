@@ -1,0 +1,85 @@
+/* Navbar Container */
+.navbar {
+    background-color: #111;
+    padding: 1rem;
+  }
+  
+  /* Brand Styling */
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white !important;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-brand img {
+    width: 1.5rem;
+    margin-right: 0.5rem;
+  }
+  
+  /* Navbar Links */
+  .navbar-nav {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white !important;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 1rem;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff !important;
+  }
+  
+  /* Responsive Dropdown Button */
+  .navbar-toggler {
+    background-color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: white;
+    width: 30px;
+    height: 3px;
+    display: block;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Navbar hides on smaller screens until toggled */
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  /* Hide menu by default on small screens */
+  @media (max-width: 768px) {
+    .navbar-collapse {
+      display: none;
+    }
+  
+    .navbar.open .navbar-collapse {
+      display: flex;
+    }
+  
+    .navbar-nav {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .navbar-nav .nav-item {
+      width: 100%;
+      padding: 0.5rem 0;
+    }
+  }
+  

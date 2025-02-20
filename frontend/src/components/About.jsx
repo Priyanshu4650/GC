@@ -21,7 +21,7 @@ const About = () => {
           points tally.
         </span>
         {/* Image Card */}
-        <div className="card p-2" style={{ width: "25rem" }}>
+        <div className="card p-2 card-about">
           <img
             src="/assests/DSC03629.JPG"
             className="card-img-top"
