@@ -1,0 +1,107 @@
+/* Container for responsive scrolling */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scroll when table overflows */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #fff;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  min-width: 800px; /* Ensures it doesn't shrink too much */
+  max-width: 1200px;
+  border-collapse: collapse;
+  text-align: center;
+  background-color: white;
+}
+
+th, td {
+  border: 2px solid black;
+  padding: 12px;
+  font-size: 16px;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Header row styling */
+th {
+  background-color: #ddd;
+  font-size: 18px;
+}
+
+/* Highlight specific rows */
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+.bold-row td {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
+
+/* RESPONSIVE DESIGN */
+
+/* Medium Screens (Tablets & Smaller Laptops) */
+@media screen and (max-width: 1024px) {
+  table {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Small Screens (Phones & Tablets) */
+@media screen and (max-width: 768px) {
+  .table-container {
+    overflow-x: scroll; /* Allows horizontal scrolling */
+  }
+
+  table {
+    min-width: 900px; /* Ensures table does not shrink too much */
+  }
+
+  th, td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  th {
+    font-size: 14px;
+  }
+
+  .highlight {
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Screens (Phones) */
+@media screen and (max-width: 480px) {
+  .table-container {
+    overflow-x: auto; /* Ensures horizontal scroll */
+  }
+
+  table {
+    min-width: 1000px; /* Ensures all columns are visible */
+  }
+
+  th, td {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  th {
+    font-size: 12px;
+  }
+
+  .highlight {
+    font-size: 12px;
+  }
+}

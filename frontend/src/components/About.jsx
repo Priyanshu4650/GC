@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/About.css"; // Make sure to create and import this CSS file for custom styling
+import ContactForm from "./Contact";
 
 const About = () => {
   return (
@@ -59,6 +60,8 @@ const About = () => {
           <img src="/assests/9.png" className="card-img-top" alt="Team 8" />
         </div>
       </div>
+
+      <ContactForm />
     </div>
   );
 };

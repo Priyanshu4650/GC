@@ -39,6 +39,11 @@ const Navbar = () => {
                 Meet the Team
               </Link>
             </li>
+            {/* <li>
+              <Link className="nav-link active" to="/previous">
+                Previous Result
+              </Link>
+            </li> */}
             <li className="nav-item">
               <Link
                 className="nav-link active"
