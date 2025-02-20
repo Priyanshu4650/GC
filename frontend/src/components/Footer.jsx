@@ -67,7 +67,7 @@ const Footer = () => {
           </a>
           <br />
           <a
-            href="https://www.instagram.com/sports_iit_pkd/?hl=en"
+            href="https://www.youtube.com/@SportsIITPKD"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-gray-800 p-3 rounded-full hover:bg-gray-700"
