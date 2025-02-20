@@ -27,18 +27,41 @@
 
 /* Card Container: Responsive Grid Layout */
 .card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-  gap: 20px;
-  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers items horizontally */
+  align-items: center; /* Aligns items in the center */
+  gap: 10px; /* Adds space between cards */
 }
 
-/* Card Style */
 .card {
-  width: 100%;
-  max-width: 12rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px; /* Set a fixed width */
+}
+
+
+.card img {
+  max-width: 100%; /* Makes images responsive */
+  height: auto;
+  display: block;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column; /* Stack images vertically on smaller screens */
+  }
+
+  .card {
+    width: 100%; /* Full width in mobile */
+  }
+
+  .card img {
+    width: 80%; /* Adjust image size for better UI */
+    margin: 0 auto; /* Centers the image */
+  }
 }
 
 /* Make images responsive */
