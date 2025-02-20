@@ -34,7 +34,7 @@ const Footer = () => {
         <div className="footer-social">
           <h3>CONNECT WITH US</h3>
           <a
-            href="https://www.instagram.com/sports_iit_pkd/?hl=en"
+            href="https://www.instagram.com/gc_iitpkd/"
             target="_blank"
             rel="noopener noreferrer"
           >
