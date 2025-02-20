@@ -30,7 +30,7 @@ const Events = (props) => {
       }
     };
 
-    document.title += ' - ' + props.title;
+    document.title = 'GC 2.0 - ' + props.title;
     fetchMatches();
   }, [props]);
 

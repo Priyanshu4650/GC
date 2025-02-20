@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 
 const Team = (props) => {
   useEffect(() => {
-    document.title += " - " + props.title;
+    document.title = "GC 2.0 - " + props.title;
   }, [props.title]);
 
   return (
