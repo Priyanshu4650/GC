@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Footer from "../components/Footer";
+import "../styles/Team.css"
 
 const Team = (props) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Team = (props) => {
         <h3>Organizing Secretary</h3>
         <div className=" d-flex justify-content-around">
           {/* Dipanshu */}
-          <div class="card" style={{ width: "18rem;" }}>
+          <div class="card" style={{ width: "15rem" }}>
             <img
               src="/assests/WhatsApp Image 2025-02-13 at 23.47.22.jpeg"
               class="card-img-top"
@@ -34,7 +35,7 @@ const Team = (props) => {
         <h2>Organizing Leads</h2>
         <div className="d-flex  justify-content-around">
           {/* Priyanshu, Pavan, Karthikeya */}
-          <div class="card" style={{ width: "18rem;" }}>
+          <div class="card" style={{ width: "15rem" }}>
             <img
               src="/assests/IMG20240608203011.jpg"
               class="card-img-top"
@@ -45,7 +46,7 @@ const Team = (props) => {
               <p class="card-text">Deputy Secretary Sports Affairs</p>
             </div>
           </div>
-          <div class="card" style={{ width: "18rem;" }}>
+          <div class="card" style={{ width: "15rem" }}>
             <img
               src="/assests/WhatsApp Image 2025-02-13 at 23.29.02.jpeg"
               class="card-img-top"
@@ -56,7 +57,7 @@ const Team = (props) => {
               <p class="card-text">Deputy Secretary Sports Affairs</p>
             </div>
           </div>
-          <div class="card" style={{ width: "18rem;" }}>
+          <div class="card" style={{ width: "15rem" }}>
             <img
               src="/assests/WhatsApp Image 2025-02-13 at 23.28.29.jpeg"
               class="card-img-top"
@@ -125,7 +126,7 @@ const Team = (props) => {
         <h2>Social Media Head</h2>
         {/* Likhith */}
         <div className="d-flex justify-content-center">
-          <div class="card" style={{ width: "18rem;" }}>
+          <div class="card" style={{ width: "15rem" }}>
             <img
               src="/assests/WhatsApp Image 2025-02-13 at 23.30.26.jpeg"
               class="card-img-top"
@@ -144,7 +145,7 @@ const Team = (props) => {
         <h2>Design Head</h2>
         {/* Chaitanya */}
         <div className="d-flex justify-content-center">
-          <div class="card" style={{ width: "18rem;" }}>
+          <div class="card" style={{ width: "15rem" }}>
             <img
               src="/assests/WhatsApp Image 2025-02-14 at 00.20.39.jpeg"
               class="card-img-top"
