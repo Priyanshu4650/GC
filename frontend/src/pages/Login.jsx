@@ -33,7 +33,13 @@ const AdminPanel = () => {
 
   const fetchMatches = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/matches");
+      const serverAdd = process.env.REACT_APP_SERVERADD;
+        console.log("Server Address:", serverAdd);
+        if (!serverAdd) {
+          console.error("Server address not found in environment variables!");
+          return;
+        }
+      const res = await axios.get(`${serverAdd}/matches`);
       setMatches([...res.data.live, ...res.data.upcoming, ...res.data.past]);
     } catch (error) {
       console.error("Error fetching matches:", error);
@@ -42,8 +48,14 @@ const AdminPanel = () => {
 
   const updateMatch = async (id, updates) => {
     try {
+      const serverAdd = process.env.REACT_APP_SERVERADD;
+        console.log("Server Address:", serverAdd);
+        if (!serverAdd) {
+          console.error("Server address not found in environment variables!");
+          return;
+        }
       const res = await axios.put(
-        `http://localhost:8000/matches/${id}`,
+        `${serverAdd}/matches/${id}`,
         updates
       );
       setMatches(matches.map((match) => (match._id === id ? res.data : match)));
