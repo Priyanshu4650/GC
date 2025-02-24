@@ -21,6 +21,7 @@ function App() {
           />
           <Route path="/login" element={<AdminPanel title="Admin Page" />} />
           <Route path="/team" element={<Team title="The Team" />} />
+          <Route path="*" element={<Home title="Home" />} />
           {/* <Route path="/previous" element={<PointsTable />}/> */}
         </Routes>
       </Router>
