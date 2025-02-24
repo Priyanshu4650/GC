@@ -12,14 +12,14 @@ const Events = (props) => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const serverAdd = process.env.REACT_APP_SERVERADD;
-        console.log("Server Address:", serverAdd);
-        if (!serverAdd) {
-          console.error("Server address not found in environment variables!");
-          return;
-        }
+        // const serverAdd = process.env.REACT_APP_SERVERADD;
+        // console.log("Server Address:", serverAdd);
+        // if (!serverAdd) {
+        //   console.error("Server address not found in environment variables!");
+        //   return;
+        // }
 
-        const response = await fetch(`${serverAdd}/matches`);
+        const response = await fetch(`https://gc-backend-s3lk.onrender.com/matches`);
         if (!response.ok) {
           throw new Error("Failed to fetch matches");
         }
