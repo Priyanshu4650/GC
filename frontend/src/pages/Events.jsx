@@ -4,15 +4,22 @@ import "../styles/Events.css"; // Import external CSS
 const Events = (props) => {
   const [matches, setMatches] = useState({ upcoming: {}, live: {}, past: {} });
   const [activeTab, setActiveTab] = useState("upcoming");
-  const [activeSport, setActiveSport] = useState("");
+  const [activeSport, setActiveSport] = useState("Football");
   const [showDropdown, setShowDropdown] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const dropdownRef = useRef(null); // Ref for handling outside clicks
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const response = await fetch("http://localhost:8000/matches");
+        const serverAdd = process.env.REACT_APP_SERVERADD;
+        console.log("Server Address:", serverAdd);
+        if (!serverAdd) {
+          console.error("Server address not found in environment variables!");
+          return;
+        }
+
+        const response = await fetch(`${serverAdd}/matches`);
         if (!response.ok) {
           throw new Error("Failed to fetch matches");
         }
@@ -37,25 +44,21 @@ const Events = (props) => {
     document.title = "GC 2.0 - " + props.title;
     fetchMatches();
 
-    // Listen for window resize to update mobile state
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     window.addEventListener("resize", handleResize);
 
-    // Close dropdown when clicking outside
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false);
+        setTimeout(() => setShowDropdown(false), 150); // Small delay to avoid race conditions
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
+    document.addEventListener("click", handleClickOutside);
     return () => {
       window.removeEventListener("resize", handleResize);
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, [props]);
 
@@ -75,13 +78,22 @@ const Events = (props) => {
         <div className="sports-tabs">
           {isMobile ? (
             <div className="dropdown" ref={dropdownRef}>
-              <button className="dropdown-btn" onClick={() => setShowDropdown(!showDropdown)}>
-                Select Sport &#x22EE;
+              <button className="dropdown-btn" onClick={(e) => {
+                  e.stopPropagation(); // Prevents immediate closure
+                  setShowDropdown((prev) => !prev);
+              }}>
+                Select Sport ⌄
               </button>
               {showDropdown && (
                 <div className="dropdown-menu">
                   {Object.keys(matches[activeTab]).map((sport) => (
-                    <button key={sport} onClick={() => { setActiveSport(sport); setShowDropdown(false); }}>
+                    <button
+                      key={sport}
+                      onClick={() => {
+                        setActiveSport(sport);
+                        setShowDropdown(false);
+                      }}
+                    >
                       {sport}
                     </button>
                   ))}
@@ -100,7 +112,7 @@ const Events = (props) => {
 
       {/* Match List */}
       <div className="match-list">
-        {matches[activeTab] && activeSport && matches[activeTab][activeSport] && matches[activeTab][activeSport].length > 0 ? (
+        {matches[activeTab] && activeSport && matches[activeTab][activeSport]?.length > 0 ? (
           matches[activeTab][activeSport].map((match) => (
             <div key={match._id} className="match-card">
               <h3>{match.teams.join(" vs ")}</h3>
