@@ -13,14 +13,14 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="#/" element={<Home title="Home" />} />
-          <Route path="#/events" element={<Events title="Events" />} />
+          <Route path="/" element={<Home title="Home" />} />
+          <Route path="/events" element={<Events title="Events" />} />
           <Route
-            path="#/points-table"
+            path="/points-table"
             element={<SportsPointsTable title="Leaderboard" />}
           />
-          <Route path="#/login" element={<AdminPanel title="Admin Page" />} />
-          <Route path="#/team" element={<Team title="The Team" />} />
+          <Route path="/login" element={<AdminPanel title="Admin Page" />} />
+          <Route path="/team" element={<Team title="The Team" />} />
           <Route path="*" element={<Home title="Home" />} />
           {/* <Route path="/previous" element={<PointsTable />}/> */}
         </Routes>
