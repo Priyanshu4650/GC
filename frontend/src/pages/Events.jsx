@@ -961,7 +961,7 @@ const Events = (props) => {
                   <p><strong>Venue:</strong> {match.venue}</p>
                   <p><strong>Sport:</strong> {match.sport}</p>
                   <p><strong>Time:</strong> {new Date(match.time).toLocaleString()}</p>
-                  <p><strong>Scores:</strong> {JSON.stringify(match.scores)}</p>
+                  {/* <p><strong>Scores:</strong> {JSON.stringify(match.scores)}</p> */}
                   <p><strong>Status:</strong> {match.status === "past" 
                     ? Object.entries(match.scores).map(([team, score]) => `${team}: ${score}`).join(" | ") 
                     : match.status}
