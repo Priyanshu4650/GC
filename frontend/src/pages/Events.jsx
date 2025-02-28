@@ -7,18 +7,12 @@ const Events = (props) => {
   const [activeSport, setActiveSport] = useState("Football");
   const [showDropdown, setShowDropdown] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [loading, setLoading] = useState(true); // Loader state
   const dropdownRef = useRef(null);
 
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        // const serverAdd = process.env.REACT_APP_SERVERADD;
-        // console.log("Server Address:", serverAdd);
-        // if (!serverAdd) {
-        //   console.error("Server address not found in environment variables!");
-        //   return;
-        // }
-
         const response = await fetch(`https://gc-backend-s3lk.onrender.com/matches`);
         if (!response.ok) {
           throw new Error("Failed to fetch matches");
@@ -38,6 +32,8 @@ const Events = (props) => {
         setMatches(categorizedMatches);
       } catch (error) {
         console.error("Error fetching matches:", error);
+      } finally {
+        setLoading(false); // Stop loading once data is fetched
       }
     };
 
@@ -51,7 +47,7 @@ const Events = (props) => {
 
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setTimeout(() => setShowDropdown(false), 150); // Small delay to avoid race conditions
+        setTimeout(() => setShowDropdown(false), 150);
       }
     };
 
@@ -64,72 +60,86 @@ const Events = (props) => {
 
   return (
     <div className="events-container">
-      {/* Tabs Section */}
-      <div className="tabs-container">
-        {["upcoming", "live", "past"].map((tab) => (
-          <button key={tab} onClick={() => setActiveTab(tab)} className={activeTab === tab ? "active" : ""}>
-            {tab.charAt(0).toUpperCase() + tab.slice(1)}
-          </button>
-        ))}
-      </div>
-
-      {/* Sports Selection (Button or Dropdown) */}
-      {matches[activeTab] && Object.keys(matches[activeTab]).length > 0 && (
-        <div className="sports-tabs">
-          {isMobile ? (
-            <div className="dropdown" ref={dropdownRef}>
-              <button className="dropdown-btn" onClick={(e) => {
-                  e.stopPropagation(); // Prevents immediate closure
-                  setShowDropdown((prev) => !prev);
-              }}>
-                Select Sport ⌄
+      {/* Show Loader While Fetching Data */}
+      {loading ? (
+        <div className="loader-container">
+          <div className="loader"></div>
+          <p>Loading schedule...</p>
+        </div>
+      ) : (
+        <>
+          {/* Tabs Section */}
+          <div className="tabs-container">
+            {["upcoming", "live", "past"].map((tab) => (
+              <button key={tab} onClick={() => setActiveTab(tab)} className={activeTab === tab ? "active" : ""}>
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
-              {showDropdown && (
-                <div className="dropdown-menu">
-                  {Object.keys(matches[activeTab]).map((sport) => (
-                    <button
-                      key={sport}
-                      onClick={() => {
-                        setActiveSport(sport);
-                        setShowDropdown(false);
-                      }}
-                    >
+            ))}
+          </div>
+
+          {/* Sports Selection (Button or Dropdown) */}
+          {matches[activeTab] && Object.keys(matches[activeTab]).length > 0 && (
+            <div className="sports-tabs">
+              {isMobile ? (
+                <div className="dropdown" ref={dropdownRef}>
+                  <button className="dropdown-btn" onClick={(e) => {
+                      e.stopPropagation();
+                      setShowDropdown((prev) => !prev);
+                  }}>
+                    Select Sport ⌄
+                  </button>
+                  {showDropdown && (
+                    <div className="dropdown-menu">
+                      {Object.keys(matches[activeTab])
+                        .sort()
+                        .map((sport) => (
+                          <button
+                            key={sport}
+                            onClick={() => {
+                              setActiveSport(sport);
+                              setShowDropdown(false);
+                            }}
+                          >
+                            {sport}
+                          </button>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                Object.keys(matches[activeTab])
+                  .sort()
+                  .map((sport) => (
+                    <button key={sport} onClick={() => setActiveSport(sport)} className={activeSport === sport ? "active" : ""}>
                       {sport}
                     </button>
-                  ))}
-                </div>
+                  ))
               )}
             </div>
-          ) : (
-            Object.keys(matches[activeTab]).map((sport) => (
-              <button key={sport} onClick={() => setActiveSport(sport)} className={activeSport === sport ? "active" : ""}>
-                {sport}
-              </button>
-            ))
           )}
-        </div>
-      )}
 
-      {/* Match List */}
-      <div className="match-list">
-        {matches[activeTab] && activeSport && matches[activeTab][activeSport]?.length > 0 ? (
-          matches[activeTab][activeSport].map((match) => (
-            <div key={match._id} className="match-card">
-              <h3>{match.teams.join(" vs ")}</h3>
-              <p><strong>Venue:</strong> {match.venue}</p>
-              <p><strong>Sport:</strong> {match.sport}</p>
-              <p><strong>Time:</strong> {new Date(match.time).toLocaleString()}</p>
-              <p><strong>Scores:</strong> {JSON.stringify(match.scores)}</p>
-              <p><strong>Status:</strong> {match.status === "past" 
-                ? Object.entries(match.scores).map(([team, score]) => `${team}: ${score}`).join(" | ") 
-                : match.status}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p className="no-matches">No {activeTab} matches available for {activeSport || "this category"}.</p>
-        )}
-      </div>
+          {/* Match List */}
+          <div className="match-list">
+            {matches[activeTab] && activeSport && matches[activeTab][activeSport]?.length > 0 ? (
+              matches[activeTab][activeSport].map((match) => (
+                <div key={match._id} className="match-card">
+                  <h3>{match.teams.join(" vs ")}</h3>
+                  <p><strong>Venue:</strong> {match.venue}</p>
+                  <p><strong>Sport:</strong> {match.sport}</p>
+                  <p><strong>Time:</strong> {new Date(match.time).toLocaleString()}</p>
+                  <p><strong>Scores:</strong> {JSON.stringify(match.scores)}</p>
+                  <p><strong>Status:</strong> {match.status === "past" 
+                    ? Object.entries(match.scores).map(([team, score]) => `${team}: ${score}`).join(" | ") 
+                    : match.status}
+                  </p>
+                </div>
+              ))
+            ) : (
+              <p className="no-matches">No {activeTab} matches available for {activeSport || "this category"}.</p>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };
