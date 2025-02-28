@@ -34,6 +34,11 @@ const Navbar = () => {
                 Events
               </Link>
             </li>
+            <li>
+              <Link className="nav-link active" to="/results">
+                Results
+              </Link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link active" to="/points-table">
                 Points Table

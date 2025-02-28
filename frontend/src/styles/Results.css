@@ -1,0 +1,136 @@
+.results-container {
+    text-align: center;
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  /* Sports Tabs */
+  .sports-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .sports-tabs button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .sports-tabs button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Pools Container */
+  .pools-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .pool {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .pool h2 {
+    color: #333;
+    font-size: 18px;
+  }
+  
+  /* Table Styles */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .sports-tabs {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .sports-tabs button {
+      width: 80%;
+    }
+  
+    .pools-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .pool {
+      width: 90%;
+    }
+  
+    th, td {
+      padding: 6px;
+      font-size: 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sports-tabs button {
+      font-size: 14px;
+      padding: 8px;
+    }
+  
+    .pool {
+      width: 100%;
+    }
+  
+    th, td {
+      font-size: 12px;
+    }
+  }
+  .sports-dropdown {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  /* Hide dropdown on larger screens */
+  @media (min-width: 768px) {
+    .sports-dropdown {
+      display: none;
+    }
+  }
+  
+  /* Hide tab buttons on mobile */
+  @media (max-width: 767px) {
+    .sports-tabs {
+      display: none;
+    }
+  }
+  

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import AdminPanel from "./pages/Login";
 import SportsPointsTable from "./pages/Points";
 import Team from "./pages/Team";
+import Results from "./pages/Results";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<AdminPanel title="Admin Page" />} />
           <Route path="/team" element={<Team title="The Team" />} />
           <Route path="*" element={<Home title="Home" />} />
+          <Route path="/results" element={<Results />} />
           {/* <Route path="/previous" element={<PointsTable />}/> */}
         </Routes>
       </Router>
