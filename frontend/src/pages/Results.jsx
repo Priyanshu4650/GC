@@ -100,8 +100,8 @@ const sportsData = {
     ],
     PoolB: [
       { team: "Wild Wolves", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Stealthy Panther", MP: 0, W: 0, L: 0, D: 0, Pts: 0 },
-      { team: "Mighty Lions", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
+      { team: "Stealthy Panther", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
+      { team: "Mighty Lions", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
   },
   "Table Tennis Mens": {
