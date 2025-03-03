@@ -65,7 +65,7 @@ const Navbar = () => {
             {isLoggedIn === "true" ? <li className="nav-item">
               <button
                 className="nav-link active"
-                onClick={localStorage.removeItem("adminLoggedIn")}
+                onClick={() => {localStorage.removeItem("adminLoggedIn");window.location.reload();}}
               >
                 Logout
               </button>

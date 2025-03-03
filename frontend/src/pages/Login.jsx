@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AdminPanel = () => {
   const [matches, setMatches] = useState([]);
@@ -7,6 +8,7 @@ const AdminPanel = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [scoreUpdates, setScoreUpdates] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedUser = localStorage.getItem("adminLoggedIn");
@@ -20,7 +22,8 @@ const AdminPanel = () => {
     if (username === "admin" && password === "password123") {
       localStorage.setItem("adminLoggedIn", "true");
       setIsLoggedIn(true);
-      fetchMatches();
+      navigate("/events");
+      // fetchMatches();
     } else {
       alert("Invalid Credentials");
     }
