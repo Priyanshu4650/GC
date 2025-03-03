@@ -954,6 +954,21 @@ app.get("/matches", async (req, res) => {
   }
 });
 
+app.put("/matches/update-match/:id", async (req, res) => {
+  const matchId = req.params.id;
+  const updatedData = req.body;
+
+  try {
+    const updatedMatch = await Match.findByIdAndUpdate(matchId, updatedData, { new: true });
+
+    if (!updatedMatch) return res.status(404).json({ error: "Match not found" });
+
+    res.json({ message: "Match updated successfully", match: updatedMatch });
+  } catch (error) {
+    res.status(500).json({ error: "Error updating match" });
+  }
+});
+
 // Update match scores in real-time
 app.put("/matches/:id/score", async (req, res) => {
   try {
