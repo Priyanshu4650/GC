@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css"; // Import external CSS
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState("");
+
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("adminLoggedIn"));
+  }, [])
 
   return (
     <nav className={`navbar navbar-expand-lg bg-dark border-bottom border-body ${isOpen ? "open" : ""}`}>
@@ -57,6 +62,14 @@ const Navbar = () => {
                 RuleBook
               </Link>
             </li>
+            {isLoggedIn === "true" ? <li className="nav-item">
+              <button
+                className="nav-link active"
+                onClick={localStorage.removeItem("adminLoggedIn")}
+              >
+                Logout
+              </button>
+            </li> : <></>}
           </ul>
         </div>
       </div>
