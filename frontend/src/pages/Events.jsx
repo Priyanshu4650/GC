@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import "../styles/Events.css";
 
-const API_URL = "http://localhost:8000/matches/update-match"; // Update with your backend URL
+const API_URL = "https://gc-backend-s3lk.onrender.com/matches/update-match";
 
 const Events = (props) => {
   const [matches, setMatches] = useState({ upcoming: {}, live: {}, past: {} });
@@ -17,7 +17,7 @@ const Events = (props) => {
   useEffect(() => {
     const fetchMatches = async () => {
       try {
-        const response = await fetch("http://localhost:8000/matches");
+        const response = await fetch("https://gc-backend-s3lk.onrender.com/matches");
         if (!response.ok) throw new Error("Failed to fetch matches");
 
         const data = await response.json();

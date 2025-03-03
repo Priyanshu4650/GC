@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Results.css"; // Assuming you have a CSS file for styling
+import "../styles/Results.css"; 
 
 const sportsData = {
   Football: {
