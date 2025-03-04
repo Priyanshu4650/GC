@@ -162,16 +162,17 @@ const Events = (props) => {
                 </>
               ) : (
                 <>
-                  <h3>{match.teams.join(" vs ")}</h3>
+                  <h3>{match.title ? match.title + " : ": ""} {match.teams.join(" vs ")}</h3>
                   <p><strong>Venue:</strong> {match.venue}</p>
                   <p><strong>Sport:</strong> {match.sport}</p>
                   <p><strong>Time:</strong> {new Date(match.time).toLocaleString()}</p>
+                  {match.livelink ? <p><strong>Live : </strong><a href={match.livelink} target="_blank" rel="noreferrer">Link</a></p> : ""}
                   <p><strong>Status:</strong> {match.status}</p>
                   {match.status === "past"
                   ? Object.entries(match.scores)
                       .map(([team, score]) => `${team}: ${score}`)
                       .join(" | ")
-                  : match.status}
+                  : ""}
                 </>
               )}
 
