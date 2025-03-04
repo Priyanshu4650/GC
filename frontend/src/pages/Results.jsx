@@ -2,32 +2,45 @@ import React, { useState, useEffect } from "react";
 import "../styles/Results.css"; 
 
 const sportsData = {
-  Football: {
+  "Badminton Mens": {
     PoolA: [
-      { team: "Ferrocious Tigers", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Stealthy Panthers", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Wild Wolves", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-      { team: "BraveBulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+      { team: "Stalwart Rhinos", MP: 3, W: 3, L: 0, D: 0, Pts: 6 },
+      { team: "Majestic Eagles", MP: 3, W: 1, L: 2, D: 0, Pts: 2 },
+      { team: "Mighty Lions", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Brave Bulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
     PoolB: [
-      { team: "Stalwart Rhinos", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Mighty Lions", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Savage Sharks", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Stealthy Panthers", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Wild Wolves", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Ferocious Tigers", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+  },
+  "Badminton Womens": {
+    PoolA: [
+      { team: "Stealthy Panther", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
+      { team: "Mighty Lions", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
+      { team: "Wild Wolves", MP: 2, W: 0, L: 2 , D: 0, Pts: 0 },
+    ],
+    PoolB: [
+      { team: "Stalwart Rhinos", MP: 3, W: 3, L: 0, D: 0, Pts: 6 },
+      { team: "Ferocious Tigers", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
       { team: "Savage Sharks", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
       { team: "Majestic Eagles", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
     ],
   },
   "Basketball Mens": {
     PoolA: [
+      { team: "Savage Sharks", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
       { team: "Ferrocious Tigers", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Savage Sharks", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Stalwart Rhinos", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
+      { team: "Stalwart Rhinos", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
       { team: "Majestic Eagles", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
     PoolB: [
-      { team: "Stealthy Panthers", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Stealthy Panthers", MP: 3, W: 3, L: 0, D: 0, Pts: 6 },
       { team: "Wild Wolves", MP: 3, W: 2, L: 1, D: 0, Pts: 4 },
       { team: "BraveBulls", MP: 3, W: 1, L: 2, D: 0, Pts: 2 },
-      { team: "Mighty Lions", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+      { team: "Mighty Lions", MP: 3, W: 0, L: 3, D: 0, Pts: 0 },
     ],
   },
   "Basketball Womens": {
@@ -39,57 +52,46 @@ const sportsData = {
       { team: "Stalwart Rhinos", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
   },
-  "Badminton Mens": {
-    PoolA: [
-      { team: "Stalwart Rhinos", MP: 3, W: 3, L: 0, D: 0, Pts: 6 },
-      { team: "Brave Bulls", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Mighty Lions", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-      { team: "Majestic Eagles", MP: 2, W: 0, L: 1, D: 0, Pts: 0 },
-    ],
-    PoolB: [
-      { team: "Savage Sharks", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Wild Wolves", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Stealthy Panthers", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Ferocious Tigers", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
-    ],
-  },
-  "Badminton Womens": {
-    PoolA: [
-      { team: "Stealthy Panther", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Mighty Lions", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Wild Wolves", MP: 2, W: 0, L: 2 , D: 0, Pts: 0 },
-    ],
-    PoolB: [
-      { team: "Stalwart Rhinos", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Ferocious Tigers", MP: 0, W: 0, L: 0, D: 0, Pts: 0 },
-      { team: "Savage Sharks", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-      { team: "Majestic Eagles", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-    ],
-  },
-  "Volleyball Mens": {
+  Cricket: {
     PoolA: [
       { team: "Stalwart Rhinos", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Stealthy Panther", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Wild Wolves", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Ferocious Tigers", MP: 3, W: 0, L: 3, D: 0, Pts: 0 },
-    ],
-    PoolB: [
-      { team: "Majestic Eagles", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Mighty Lions", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
       { team: "Savage Sharks", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Brave Bulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
-    ],
-  },
-  "Volleyball Womens": {
-    PoolA: [
-      { team: "Wild Wolves", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Brave Bulls", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-      { team: "Savage Sharks", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
+      { team: "Brave Bulls", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Mighty Lions", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
     PoolB: [
-      { team: "Stealthy Panther", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Stalwart Rhinos", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-      { team: "Mighty Lions", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
+      { team: "Majestic Eagles", MP: 3, W: 3, L: 0, D: 0, Pts: 6 },
+      { team: "Stealthy Panther", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Ferocious Tigers", MP: 3, W: 1, L: 2, D: 0, Pts: 2 },
+      { team: "Wild Wolves", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+  },
+  Football: {
+    PoolA: [
+      { team: "Ferrocious Tigers", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Stealthy Panthers", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Wild Wolves", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
+      { team: "BraveBulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+    PoolB: [
+      { team: "Stalwart Rhinos", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Majestic Eagles", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Mighty Lions", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Savage Sharks", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+  },
+  "Table Tennis Mens": {
+    PoolA: [
+      { team: "Savage Sharks", MP: 3, W: 3, L: 0, D: 0, Pts: 6 },
+      { team: "Wild Wolves", MP: 3, W: 2, L: 1, D: 0, Pts: 4 },
+      { team: "Majestic Eagles", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+      { team: "Stealthy Panther", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+    PoolB: [
+      { team: "Stalwart Rhinos", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Ferocious Tigers", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Mighty Lions", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+      { team: "Brave Bulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
   },
   "Table Tennis Womens": {
@@ -104,32 +106,30 @@ const sportsData = {
       { team: "Mighty Lions", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
     ],
   },
-  "Table Tennis Mens": {
-    PoolA: [
-      { team: "Savage Sharks", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Wild Wolves", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Majestic Eagles", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-      { team: "Stealthy Panther", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-    ],
-    PoolB: [
-      { team: "Ferocious Tigers", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Stalwart Rhinos", MP: 0, W: 0, L: 0, D: 0, Pts: 0 },
-      { team: "Mighty Lions", MP: 0, W: 0, L: 0, D: 0, Pts: 0 },
-      { team: "Brave Bulls", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
-    ],
-  },
-  Cricket: {
+  "Volleyball Mens": {
     PoolA: [
       { team: "Stalwart Rhinos", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Brave Bulls", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
-      { team: "Savage Sharks", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Mighty Lion", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+      { team: "Wild Wolves", MP: 3, W: 2, L: 1, D: 0, Pts: 4 },
+      { team: "Stealthy Panther", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Ferocious Tigers", MP: 3, W: 0, L: 3, D: 0, Pts: 0 },
     ],
     PoolB: [
-      { team: "Majestic Eagles", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
-      { team: "Stealthy Panther", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Ferocious Tigers", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
-      { team: "Wild Wolves", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+      { team: "Majestic Eagles", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
+      { team: "Mighty Lions", MP: 1, W: 1, L: 0, D: 0, Pts: 2 },
+      { team: "Savage Sharks", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Brave Bulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+  },
+  "Volleyball Womens": {
+    PoolA: [
+      { team: "Wild Wolves", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Savage Sharks", MP: 2, W: 1, L: 1, D: 0, Pts: 2 },
+      { team: "Brave Bulls", MP: 2, W: 0, L: 2, D: 0, Pts: 0 },
+    ],
+    PoolB: [
+      { team: "Stealthy Panther", MP: 2, W: 2, L: 0, D: 0, Pts: 4 },
+      { team: "Stalwart Rhinos", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
+      { team: "Mighty Lions", MP: 1, W: 0, L: 1, D: 0, Pts: 0 },
     ],
   },
 };
